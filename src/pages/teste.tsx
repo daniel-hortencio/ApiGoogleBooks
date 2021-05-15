@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "services/api";
 
+import { useSearchKeyWords } from "contexts/SearchKeyWords";
+
 export default function Test() {
   const [results, setResults] = useState<any>();
-  const [searchKeyWords, setSearchKeyWords] = useState<string>("");
+
+  const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
 
   async function getBooks() {
     return await api.get(
@@ -26,6 +29,7 @@ export default function Test() {
       <div style={{ border: "solid 1px red" }}>
         <input
           type="text"
+          placeholder="Digite sua busca"
           onChange={(e) => setSearchKeyWords(e.target.value)}
         />
       </div>
