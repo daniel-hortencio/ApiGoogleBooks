@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "services/api";
+import { getBooks } from "services/ApiFunctions/Book";
 
 import { useSearchKeyWords } from "contexts/SearchKeyWords";
 
@@ -8,16 +8,10 @@ export default function Test() {
 
   const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
 
-  async function getBooks() {
-    return await api.get(
-      `/v1/volumes?q=${searchKeyWords}&key=${process.env.NEXT_PUBLIC_API_KEY}`
-    );
-  }
-
   useEffect(() => {
-    getBooks()
-      .then(({ data }) => {
-        setResults(data.items);
+    getBooks(searchKeyWords)
+      .then(({ items }) => {
+        setResults(items);
       })
       .catch((err) => console.log(err));
   }, [searchKeyWords]);
@@ -48,9 +42,9 @@ export default function Test() {
                 padding: "1rem",
               }}
             >
-              {book.volumeInfo.imageLinks?.thumbnail && (
+              {book.volumeInfo?.imageLinks?.thumbnail && (
                 <img
-                  src={book.volumeInfo.imageLinks?.thumbnail || ""}
+                  src={book.volumeInfo.imageLinks.thumbnail}
                   alt="Imagem do produto"
                   width={100}
                   height={100}
