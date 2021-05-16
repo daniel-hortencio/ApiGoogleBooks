@@ -1,6 +1,7 @@
 import * as S from "./styles";
 
 import Topbar from "components/Topbar";
+import Container from "components/Container";
 
 export interface IWebsiteTemplate {
   withSearchBar?: boolean;
@@ -12,11 +13,15 @@ const WebsiteTemplate = ({
   children,
 }: IWebsiteTemplate) => {
   return (
-    <div>
+    <S.WebsiteTemplate>
       <Topbar withSearchBar={withSearchBar} />
-      <main></main>
-      <footer>Desenvolvido por DaniDev</footer>
-    </div>
+      <main>
+        <Container>{children}</Container>
+      </main>
+      <footer>
+        <Container>Desenvolvido por DaniDev</Container>
+      </footer>
+    </S.WebsiteTemplate>
   );
 };
 
