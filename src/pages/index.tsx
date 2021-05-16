@@ -5,6 +5,7 @@ import { useSearchKeyWords } from "contexts/SearchKeyWords";
 import { findBooks } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
+import { GridContainer } from "components/GridContainer/styles";
 
 export default function Home() {
   const [results, setResults] = useState<any>();
@@ -31,7 +32,7 @@ export default function Home() {
       <WebsiteTemplate withSearchBar>
         <h2>Resultados da pesquisa:</h2>
 
-        <ul style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+        <GridContainer>
           {results &&
             results.map((book) => (
               <a href={`/livro/${book.id}`}>
@@ -59,7 +60,7 @@ export default function Home() {
                 </li>
               </a>
             ))}
-        </ul>
+        </GridContainer>
       </WebsiteTemplate>
     </>
   );
