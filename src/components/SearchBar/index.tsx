@@ -6,20 +6,30 @@ import * as S from "./styles";
 interface ISearchBar {
   value: string;
   handleChange: (e) => void;
+  onSubmit: (e) => void;
   isLoading: boolean;
 }
 
-const SearchBar = ({ value, handleChange, isLoading }: ISearchBar) => {
+const SearchBar = ({
+  value,
+  handleChange,
+  onSubmit,
+  isLoading,
+}: ISearchBar) => {
   return (
     <S.SearchBar>
-      <IconSearch size={28} />
-      <input
-        type="text"
-        placeholder="Digite sua busca"
-        value={value}
-        onChange={(e) => handleChange(e.target.value)}
-      />
-      <div>{isLoading && <Spinner />}</div>
+      <form onSubmit={onSubmit}>
+        <button type="submit" disabled={value === ""}>
+          <IconSearch size={28} />
+        </button>
+        <input
+          type="text"
+          placeholder="Digite sua busca"
+          value={value}
+          onChange={(e) => handleChange(e.target.value)}
+        />
+        <div>{isLoading && <Spinner />}</div>
+      </form>
     </S.SearchBar>
   );
 };

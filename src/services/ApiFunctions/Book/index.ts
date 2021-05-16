@@ -16,5 +16,3 @@ export const findBookById = async (id: string) => {
 
 }
 
-
-//https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=yourAPIKey

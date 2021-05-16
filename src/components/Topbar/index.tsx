@@ -1,16 +1,15 @@
 import { useSearchKeyWords } from "contexts/SearchKeyWords";
 
-import Container from "../Container";
+import Container from "components/Container";
+import Logo from "components/Logo";
 
 import * as S from "./styles";
 
 const Topbar = () => {
-  const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
-
   return (
     <S.TopBar>
       <Container>
-        <h1>Logo</h1>
+        <Logo />
       </Container>
     </S.TopBar>
   );

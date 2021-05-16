@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { IconBook, IconLike, IconArrowRight } from "../Icons";
+
+import ImageContainer from "components/ImageContainer";
 import Text from "../Text";
 
 import * as S from "./styles";
@@ -22,13 +24,7 @@ const Card = ({
 }: ICard) => {
   return (
     <S.Card>
-      <S.ImageContainer>
-        {imageUrl ? (
-          <img src={imageUrl} alt="Imagem do livro" />
-        ) : (
-          <IconBook size={28} />
-        )}
-      </S.ImageContainer>
+      <ImageContainer imageUrl={imageUrl} />
 
       <S.Row>
         <button>
@@ -44,7 +40,7 @@ const Card = ({
         <Text
           text={description || "Sem descrição"}
           limit={3}
-          style={{ opacity: description ? 1 : 0.4 }}
+          style={{ opacity: description ? 1 : 0.5 }}
         />
         <footer>
           <Link href={`/livro/${id}`}>

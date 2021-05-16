@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useSearchKeyWords } from "contexts/SearchKeyWords";
 import { findBooks } from "services/ApiFunctions/Book";
@@ -8,31 +8,34 @@ import WebsiteTemplate from "templates/Website";
 import SearchBar from "components/SearchBar";
 import { GridContainer } from "components/GridContainer/styles";
 import Card from "../components/Card";
+import Text from "components/Text";
 
 export default function Home() {
   const [results, setResults] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
+  const [pagination, setPagination] = useState({
+    startIndex: 0,
+    maxResults: 10,
+    total: 0,
+  });
 
-  useEffect(() => {
+  function handleSubmit(e) {
+    e.preventDefault();
+
     if (searchKeyWords) {
       setIsLoading(true);
       findBooks(searchKeyWords)
-        .then(({ items }) => {
-          console.log(items);
-          setResults(items);
+        .then((data) => {
+          console.log(data);
+          setResults(data);
         })
         .catch((err) => console.log(err))
         .finally(() => setIsLoading(false));
 
       return;
     }
-
-    setResults("");
-  }, [searchKeyWords]);
-
-  console.log(searchKeyWords);
+  }
 
   return (
     <>
@@ -47,12 +50,18 @@ export default function Home() {
           value={searchKeyWords}
           handleChange={setSearchKeyWords}
           isLoading={isLoading}
+          onSubmit={handleSubmit}
         />
-        <h2>Resultados da pesquisa:</h2>
+        {results?.totalItems && (
+          <Text
+            text={`Resultados da pesquisa: ${results.totalItems}`}
+            style={{ margin: "1rem 0" }}
+          />
+        )}
 
         <GridContainer>
           {results &&
-            results.map((book) => (
+            results.items.map((book) => (
               <Card
                 key={book.id}
                 id={book.id}

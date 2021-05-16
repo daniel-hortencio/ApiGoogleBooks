@@ -42,7 +42,7 @@ const Text = ({
       WebkitBoxOrient: "vertical",
       overflow: "hidden",
       textOverflow: "ellipsis",
-      height: `${limit * 1.4}rem`,
+      height: `${limit * 1.4}em`,
     };
   }
 
