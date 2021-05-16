@@ -4,7 +4,6 @@ import { isPropertySignature } from 'typescript';
 export const Card = styled.div`
   background-color: #fff;
   border-radius: 1rem;
-  transition: all 0.3s;
   overflow: hidden;
 
   :hover {
@@ -60,7 +59,6 @@ export const Row = styled.div`
     svg {
       stroke: ${props => props.theme.colors.gray};
       fill: transparent;
-      transition: all 0.3s;
     }
 
     :hover {
@@ -97,7 +95,6 @@ export const Details = styled.div`
       align-items: center;
       justify-content: center;
       background-color: ${props => props.theme.colors.primary};
-      transition: all 0.3s;
       color: #fff;
       border-radius: 1rem;
       padding: 0.5rem;

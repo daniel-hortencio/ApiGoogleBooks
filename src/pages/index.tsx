@@ -5,22 +5,34 @@ import { useSearchKeyWords } from "contexts/SearchKeyWords";
 import { findBooks } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
+import SearchBar from "components/SearchBar";
 import { GridContainer } from "components/GridContainer/styles";
 import Card from "../components/Card";
 
 export default function Home() {
   const [results, setResults] = useState<any>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
 
   useEffect(() => {
-    findBooks(searchKeyWords)
-      .then(({ items }) => {
-        console.log(items);
-        setResults(items);
-      })
-      .catch((err) => console.log(err));
+    if (searchKeyWords) {
+      setIsLoading(true);
+      findBooks(searchKeyWords)
+        .then(({ items }) => {
+          console.log(items);
+          setResults(items);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoading(false));
+
+      return;
+    }
+
+    setResults("");
   }, [searchKeyWords]);
+
+  console.log(searchKeyWords);
 
   return (
     <>
@@ -30,7 +42,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <WebsiteTemplate withSearchBar>
+      <WebsiteTemplate>
+        <SearchBar
+          value={searchKeyWords}
+          handleChange={setSearchKeyWords}
+          isLoading={isLoading}
+        />
         <h2>Resultados da pesquisa:</h2>
 
         <GridContainer>

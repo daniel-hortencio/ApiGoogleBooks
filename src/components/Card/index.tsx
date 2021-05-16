@@ -41,7 +41,11 @@ const Card = ({
 
       <S.Details>
         <Text element="h3" text={title} limit={2} />
-        <Text text={description || "Sem descrição"} limit={3} />
+        <Text
+          text={description || "Sem descrição"}
+          limit={3}
+          style={{ opacity: description ? 1 : 0.4 }}
+        />
         <footer>
           <Link href={`/livro/${id}`}>
             <a>

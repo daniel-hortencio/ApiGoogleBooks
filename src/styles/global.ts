@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
     font-family: 'Roboto', sans-serif;
     line-height: 1.4rem;
+    transition: all 0.3s;
   }
 
   body {

@@ -4,17 +4,13 @@ import Topbar from "components/Topbar";
 import Container from "components/Container";
 
 export interface IWebsiteTemplate {
-  withSearchBar?: boolean;
   children: React.ReactNode;
 }
 
-const WebsiteTemplate = ({
-  withSearchBar = false,
-  children,
-}: IWebsiteTemplate) => {
+const WebsiteTemplate = ({ children }: IWebsiteTemplate) => {
   return (
     <S.WebsiteTemplate>
-      <Topbar withSearchBar={withSearchBar} />
+      <Topbar />
       <main>
         <Container>{children}</Container>
       </main>
