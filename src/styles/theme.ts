@@ -4,7 +4,9 @@ export default {
     primary: "#f2414a",
     primaryDark: "#cd3139",
     secondary: "#ffbf24",
-    black: "#222222"
+    black: "#222222",
+    grayLight: "#ddd",
+    gray: "#aaa",
   },
 
   breakpoints: {

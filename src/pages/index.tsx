@@ -6,6 +6,7 @@ import { findBooks } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
 import { GridContainer } from "components/GridContainer/styles";
+import Card from "../components/Card";
 
 export default function Home() {
   const [results, setResults] = useState<any>();
@@ -35,30 +36,14 @@ export default function Home() {
         <GridContainer>
           {results &&
             results.map((book) => (
-              <a href={`/livro/${book.id}`}>
-                <li
-                  key={book.id}
-                  style={{
-                    border: "solid 1px red",
-                    borderRadius: "1rem",
-                    marginBottom: "1rem",
-                    padding: "1rem",
-                  }}
-                >
-                  {book.volumeInfo?.imageLinks?.thumbnail && (
-                    <img
-                      src={book.volumeInfo.imageLinks.thumbnail}
-                      alt="Imagem do produto"
-                      width={100}
-                      height={100}
-                      style={{ objectFit: "contain", border: "solid 1px red" }}
-                    />
-                  )}
-                  <h3>{book.volumeInfo.title}</h3>
-                  <p>Descrição: {book.volumeInfo.description}</p>
-                  <small>Data: {book.volumeInfo.publishedDate}</small>
-                </li>
-              </a>
+              <Card
+                key={book.id}
+                id={book.id}
+                title={book.volumeInfo.title}
+                imageUrl={book.volumeInfo?.imageLinks?.thumbnail}
+                description={book.volumeInfo.description}
+                publishedDate={book.volumeInfo.publishedDate}
+              />
             ))}
         </GridContainer>
       </WebsiteTemplate>

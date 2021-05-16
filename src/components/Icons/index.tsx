@@ -1,21 +1,9 @@
-import {
-  FiShoppingBag,
-  FiSettings,
-  FiLogOut,
-  FiHome,
-  FiGrid,
-  FiMenu,
-  FiList,
-} from "react-icons/fi";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { FaBook } from "react-icons/fa";
+import { FiHeart } from "react-icons/fi";
+import { BsArrowRight } from "react-icons/bs";
 
 export {
-  FiHome as IconHome,
-  FiShoppingBag as IconProducts,
-  FiSettings as IconSettings,
-  FiLogOut as IconLogout,
-  FiMenu as IconMenu,
-  MdKeyboardArrowRight as IconArrow,
-  FiGrid as IconGrid,
-  FiList as IconList,
+  FaBook as IconBook,
+  FiHeart as IconLike,
+  BsArrowRight as IconArrowRight,
 };

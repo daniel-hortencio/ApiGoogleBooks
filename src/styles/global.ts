@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.black};
     list-style: none;
     font-family: 'Roboto', sans-serif;
+    line-height: 1.4rem;
   }
 
   body {
