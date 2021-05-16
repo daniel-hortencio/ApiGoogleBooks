@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import WebsiteTemplate from "templates/Website";
+
 export default function Home() {
   return (
     <>
@@ -9,7 +11,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Api Google Books</h1>
+      <WebsiteTemplate withSearchBar>
+        <h1>Api Google Books</h1>
+      </WebsiteTemplate>
     </>
   );
 }
