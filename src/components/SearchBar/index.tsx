@@ -33,6 +33,7 @@ const SearchBar = ({
           <div>{isLoading && <Spinner />}</div>
         </form>
       </S.SearchBar>
+
       <ButtonMyFavorites />
     </S.Row>
   );

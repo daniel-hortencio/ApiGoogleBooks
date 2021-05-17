@@ -21,7 +21,7 @@ export const Logo = styled.div`
     font-weight: 900;
 
     ::after {
-      content:"+";
+      content:"mais";
       color: ${props => props.theme.colors.secondary};
     }
   }

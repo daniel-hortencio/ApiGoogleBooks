@@ -5,6 +5,7 @@ import { findBookById } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
 import BookDetails from "components/BookDetails";
+import ButtonGoBack from "components/ButtonGoBack";
 
 const Livro = () => {
   const [book, setBook] = useState<any>();
@@ -22,6 +23,7 @@ const Livro = () => {
 
   return (
     <WebsiteTemplate>
+      <ButtonGoBack />
       {book && (
         <BookDetails
           title={book.title}

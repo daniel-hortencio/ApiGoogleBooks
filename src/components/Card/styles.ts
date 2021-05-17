@@ -73,15 +73,15 @@ export const ButtonLike = styled.button< ButtonLike>`
 
   :hover {
     svg {
-      stroke: ${props => props.theme.colors.primary};
+      stroke: ${props => props.theme.colors.secondary};
       fill: transparent;
     }
   }
 
   ${props => props.isFavorite && css`
     svg {
-      stroke: ${props => props.theme.colors.primary};
-      fill: ${props => props.theme.colors.primary} !important;
+      stroke: ${props => props.theme.colors.secondary};
+      fill: ${props => props.theme.colors.secondary} !important;
     }
   `}
 

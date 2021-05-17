@@ -12,10 +12,10 @@ export const GoBack = styled.a`
   }
 
   :hover {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.secondary};
 
     svg {
-      fill: ${props => props.theme.colors.primary};
+      fill: ${props => props.theme.colors.secondary};
     }
   }
 `

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Row = styled.div`
   display: flex;
   align-items: center;
-
 `
 
 export const SearchBar = styled.div`
-flex: auto;
+  flex: auto;
+
   form {
     border: solid 2px ${props => props.theme.colors.gray};
     display: flex;
@@ -20,8 +20,9 @@ flex: auto;
       display: flex;
       align-items: center;
       margin-right: 0.8rem;
+
       svg {
-        transition: none;
+        transition: stroke 0s, transform 0.3s;
       }
     }
 
@@ -38,7 +39,8 @@ flex: auto;
       border-color: ${props => props.theme.colors.primary};
 
       svg {
-        stroke: ${props => props.theme.colors.primary};
+        stroke: ${props => props.theme.colors.secondary};
+        transform: rotate(90deg);
       }
     }
   }

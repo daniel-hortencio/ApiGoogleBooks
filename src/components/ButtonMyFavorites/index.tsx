@@ -8,7 +8,8 @@ const ButtonMyFavorites = () => {
   return (
     <Link href={"/meus-favoritos"}>
       <S.ButtonMyFavorites>
-        <IconLike size={24} /> Meus favoritos
+        <IconLike size={24} />
+        <span>Meus favoritos</span>
       </S.ButtonMyFavorites>
     </Link>
   );
