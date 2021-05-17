@@ -7,7 +7,6 @@ import {
   IconAuthors,
   IconCalendar,
   IconLanguage,
-  IconArrowLeft,
 } from "components/Icons";
 
 import * as S from "./styles";
@@ -22,12 +21,6 @@ const BookDetails = ({
 }) => {
   return (
     <>
-      <Link href={`/`}>
-        <S.GoBack>
-          <IconArrowLeft size={24} /> Voltar
-        </S.GoBack>
-      </Link>
-
       <S.BookDetails>
         <S.Header>
           <ImageContainer imageUrl={imageUrl} />

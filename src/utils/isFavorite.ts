@@ -6,8 +6,8 @@ export const isFavorite = (id: string) => {
       localStorage.getItem("@api-google-books/favoritos") as string
     );
 
-    if (favorites.includes(id)) {
-      isFavorite = true;
+    if (favorites.some((favorite) => favorite.id === id)) {
+      isFavorite = true
     }
   }
 

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+
+`
+
 export const SearchBar = styled.div`
+flex: auto;
   form {
     border: solid 2px ${props => props.theme.colors.gray};
     display: flex;

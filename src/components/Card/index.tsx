@@ -27,18 +27,24 @@ const Card = ({
   const [cardIsFavorite, setCardIsFavorite] = useState<boolean>(isFavorite(id));
 
   const handleStoreFavorite = (id: string) => {
-    let favorites: string[] = [];
+    let favorites: any[] = [];
 
     if (localStorage.getItem("@api-google-books/favoritos")) {
       favorites = JSON.parse(
         localStorage.getItem("@api-google-books/favoritos") as string
       );
 
-      if (favorites.includes(id)) {
-        favorites = favorites.filter((favorite) => favorite !== id);
+      if (favorites.some((favorite) => favorite.id === id)) {
+        favorites = favorites.filter((favorite) => favorite.id !== id);
         setCardIsFavorite(false);
       } else {
-        favorites.push(id);
+        favorites.push({
+          id,
+          imageUrl,
+          title,
+          description,
+          publishedDate,
+        });
         setCardIsFavorite(true);
       }
 
@@ -48,13 +54,28 @@ const Card = ({
       );
       return;
     } else {
-      favorites.push(id);
+      favorites.push({
+        id,
+        imageUrl,
+        title,
+        description,
+        publishedDate,
+      });
     }
 
     localStorage.setItem(
       "@api-google-books/favoritos",
-      JSON.stringify(favorites)
+      JSON.stringify([
+        {
+          id,
+          imageUrl,
+          title,
+          description,
+          publishedDate,
+        },
+      ])
     );
+
     setCardIsFavorite(true);
   };
 

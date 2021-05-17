@@ -1,25 +1,5 @@
 import styled from 'styled-components';
 
-export const GoBack = styled.a`
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-
-  svg {
-    transition: none;
-    margin-right: 1rem;
-  }
-
-  :hover {
-    color: ${props => props.theme.colors.primary};
-
-    svg {
-      fill: ${props => props.theme.colors.primary};
-    }
-  }
-`
-
 export const BookDetails = styled.div`
   padding: 1rem;
   border-radius: 1rem;
