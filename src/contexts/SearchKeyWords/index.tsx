@@ -23,7 +23,7 @@ export const useSearchKeyWords = () => {
   const context = useContext(SearchKeyWordsContext);
 
   if (!context)
-    throw new Error("useLanguage must be used within a GridOrListProvider");
+    throw new Error("useLanguage must be used within a SearchKeyWordsProvider");
 
   const { searchKeyWords, setSearchKeyWords } = context;
 

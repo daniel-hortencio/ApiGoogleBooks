@@ -3,10 +3,20 @@ import styled from 'styled-components';
 export const Row = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}){
+    flex-direction: row-reverse;
+  }
 `
 
 export const SearchBar = styled.div`
   flex: auto;
+  width: 100%;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}){
+    width: initial;
+  }
 
   form {
     border: solid 2px ${props => props.theme.colors.gray};

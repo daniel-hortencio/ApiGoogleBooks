@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 import { useSearchKeyWords } from "contexts/SearchKeyWords";
+import { useSearchResults } from "contexts/SearchResults";
 import { findBooks } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
@@ -11,7 +12,8 @@ import Card from "../components/Card";
 import Text from "components/Text";
 
 export default function Home() {
-  const [results, setResults] = useState<any>();
+  const { results, setResults } = useSearchResults();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
   const [pagination, setPagination] = useState({
@@ -34,6 +36,9 @@ export default function Home() {
         .finally(() => setIsLoading(false));
 
       return;
+    } else {
+      setResults(null);
+      setIsLoading(false);
     }
   }
 

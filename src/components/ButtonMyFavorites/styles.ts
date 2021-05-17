@@ -7,26 +7,21 @@ export const ButtonMyFavorites = styled.a`
   align-items: center;
   justify-content: center;
   height: 3rem;
-  width: 3rem;
+  width: 11rem;
   border-radius: 1.5rem;
   padding: 0.5rem;
-  margin-left: 1rem;
+  margin: 0 0 1rem 0;
 
-  @media(min-width: 520px) {
-    width: initial;
-    padding: 0.5rem 1rem;
+  @media(min-width: ${props => props.theme.breakpoints.tablet}){
+    margin: 0 1rem 0 0;
   }
 
-  @media(min-width: ${props => props.theme.breakpoints.mobileLandscape}) {
-    margin-left: 2rem;
+  @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    margin-left: 1rem;
   }
 
   span {
-    display: none;
     color: #fff;
-    @media(min-width: ${props => props.theme.breakpoints.mobileLandscape}) {
-      display: initial;
-    }
   }
 
   :hover {
@@ -35,10 +30,7 @@ export const ButtonMyFavorites = styled.a`
 
   svg {
     stroke: #fff;
-
-    @media(min-width: ${props => props.theme.breakpoints.mobileLandscape}) {
       margin-right: 1rem;
-    }
   }
 
 `

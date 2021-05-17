@@ -19,22 +19,21 @@ const SearchBar = ({
 }: ISearchBar) => {
   return (
     <S.Row>
+      <ButtonMyFavorites />
       <S.SearchBar>
         <form onSubmit={onSubmit}>
-          <button type="submit" disabled={value === ""}>
+          <button type="submit">
             <IconSearch size={28} />
           </button>
           <input
             type="text"
-            placeholder="Digite sua busca"
+            placeholder="O que você quer ler hoje?"
             value={value}
             onChange={(e) => handleChange(e.target.value)}
           />
           <div>{isLoading && <Spinner />}</div>
         </form>
       </S.SearchBar>
-
-      <ButtonMyFavorites />
     </S.Row>
   );
 };
