@@ -54,7 +54,7 @@ export default function Home() {
         />
         {results?.totalItems && (
           <Text
-            text={`Resultados da pesquisa: ${results.totalItems}`}
+            text={`Resultados da busca: ${results.totalItems}`}
             style={{ margin: "1rem 0" }}
           />
         )}

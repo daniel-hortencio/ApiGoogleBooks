@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Link from "next/link";
 
-import { IconBook, IconLike, IconArrowRight } from "../Icons";
-
+import { IconLike, IconArrowRight } from "../Icons";
 import ImageContainer from "components/ImageContainer";
 import Text from "../Text";
+
+import { isFavorite } from "utils/isFavorite";
 
 import * as S from "./styles";
 
@@ -22,14 +24,51 @@ const Card = ({
   description,
   publishedDate,
 }: ICard) => {
+  const [cardIsFavorite, setCardIsFavorite] = useState<boolean>(isFavorite(id));
+
+  const handleStoreFavorite = (id: string) => {
+    let favorites: string[] = [];
+
+    if (localStorage.getItem("@api-google-books/favoritos")) {
+      favorites = JSON.parse(
+        localStorage.getItem("@api-google-books/favoritos") as string
+      );
+
+      if (favorites.includes(id)) {
+        favorites = favorites.filter((favorite) => favorite !== id);
+        setCardIsFavorite(false);
+      } else {
+        favorites.push(id);
+        setCardIsFavorite(true);
+      }
+
+      localStorage.setItem(
+        "@api-google-books/favoritos",
+        JSON.stringify(favorites)
+      );
+      return;
+    } else {
+      favorites.push(id);
+    }
+
+    localStorage.setItem(
+      "@api-google-books/favoritos",
+      JSON.stringify(favorites)
+    );
+    setCardIsFavorite(true);
+  };
+
   return (
     <S.Card>
       <ImageContainer imageUrl={imageUrl} />
 
       <S.Row>
-        <button>
+        <S.ButtonLike
+          isFavorite={cardIsFavorite}
+          onClick={() => handleStoreFavorite(id)}
+        >
           <IconLike size={24} />
-        </button>
+        </S.ButtonLike>
         {publishedDate && (
           <Text element="small" text={publishedDate || "Sem data"} />
         )}
@@ -44,7 +83,7 @@ const Card = ({
         />
         <footer>
           <Link href={`/livro/${id}`}>
-            <a>
+            <a href={`/livro/${id}`}>
               Ver mais <IconArrowRight size={24} />
             </a>
           </Link>

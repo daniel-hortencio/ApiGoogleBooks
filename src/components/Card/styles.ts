@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { isPropertySignature } from 'typescript';
+import { isFavorite } from 'utils/isFavorite';
 
 export const Card = styled.div`
   background-color: #fff;
@@ -46,32 +47,44 @@ export const Row = styled.div`
   position: relative;
   z-index: 2;
 
-  button {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #fff;
-    border: solid 2px ${props => props.theme.colors.grayLight};
-
-    svg {
-      stroke: ${props => props.theme.colors.gray};
-      fill: transparent;
-    }
-
-    :hover {
-      svg {
-        stroke: ${props => props.theme.colors.black};
-        fill: transparent;
-      }
-    }
-  }
-
   small {
     opacity: 0.5;
   }
+`
+
+interface ButtonLike {
+  isFavorite: boolean;
+}
+
+export const ButtonLike = styled.button< ButtonLike>`
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+  border: solid 2px ${props => props.theme.colors.grayLight};
+
+  svg {
+    stroke: ${props => props.theme.colors.gray};
+    fill: transparent;
+  }
+
+  :hover {
+    svg {
+      stroke: ${props => props.theme.colors.primary};
+      fill: transparent;
+    }
+  }
+
+  ${props => props.isFavorite && css`
+    svg {
+      stroke: ${props => props.theme.colors.primary};
+      fill: ${props => props.theme.colors.primary} !important;
+    }
+  `}
+
 `
 
 export const Details = styled.div`
