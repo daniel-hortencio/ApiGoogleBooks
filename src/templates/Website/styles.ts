@@ -9,4 +9,13 @@ export const WebsiteTemplate = styled.div`
     padding-top: 6rem;
     flex: auto;
   }
+
+  > footer {
+    background-color: ${props => props.theme.colors.primary};
+
+    p {
+      color: #fff;
+      text-align: center;
+    }
+  }
 `

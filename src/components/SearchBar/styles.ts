@@ -33,6 +33,7 @@ export const SearchBar = styled.div`
 
       svg {
         transition: stroke 0s, transform 0.3s;
+        stroke: ${props => props.theme.colors.gray};
       }
     }
 

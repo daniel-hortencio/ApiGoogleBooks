@@ -4,24 +4,34 @@ export const BookDetails = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   background-color: #fff;
-  box-shadow: 0px 1px 20px 0 rgba(0,0,0,0.15);
+  box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.08);
 `
 
 export const Header = styled.div`
- display: grid;
-  grid-template-columns: 30rem 1fr;
-  gap: 2rem;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}){
+    display: flex;
+  }
 `
 
-export const ImageContainer = styled.div`
-  margin-right: 2rem;
+export const ImageColumn = styled.div`
+  flex: 2;
+  margin: 0 0 2rem 0;
 
+  @media(min-width: ${props => props.theme.breakpoints.tablet}){
+    margin: 0 2rem 0 0;
+  }
 `
 
 export const Details = styled.div`
+  flex: 3;
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
+
+    @media(min-width: ${props => props.theme.breakpoints.tablet}){
+      font-size: 1.6rem;
+    }
   }
 `
 

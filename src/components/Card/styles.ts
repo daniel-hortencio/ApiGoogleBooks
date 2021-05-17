@@ -1,16 +1,19 @@
 import styled, { css } from 'styled-components';
-import { isPropertySignature } from 'typescript';
-import { isFavorite } from 'utils/isFavorite';
 
 export const Card = styled.div`
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
 
-  :hover {
-    box-shadow: 0px 1px 20px 0 rgba(0,0,0,0.15);
-    transform: translateY(-0.5rem);
+  box-shadow: 0px 1px 6px 0 rgba(0,0,0,0.06);
+
+  @media(min-width: ${props => props.theme.breakpoints.notebook}){
+    :hover {
+      box-shadow: 0px 4px 20px 0 rgba(0,0,0,0.15);
+      transform: translateY(-0.5rem);
+    }
   }
+
 `
 
 export const ImageContainer = styled.div`

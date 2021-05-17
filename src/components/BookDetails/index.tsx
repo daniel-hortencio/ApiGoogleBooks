@@ -23,7 +23,9 @@ const BookDetails = ({
     <>
       <S.BookDetails>
         <S.Header>
-          <ImageContainer imageUrl={imageUrl} />
+          <S.ImageColumn>
+            <ImageContainer imageUrl={imageUrl} />
+          </S.ImageColumn>
 
           <S.Details>
             <Text element="h1" text={title} />

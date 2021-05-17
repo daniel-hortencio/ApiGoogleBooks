@@ -17,8 +17,12 @@ export const Logo = styled.div`
   }
 
   strong {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 900;
+
+    @media(min-width: ${props => props.theme.breakpoints.mobileLandscape}){
+      font-size: 2.4rem;
+    }
 
     ::after {
       content:"mais";

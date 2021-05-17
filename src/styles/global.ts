@@ -45,18 +45,18 @@ const GlobalStyle = createGlobalStyle`
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: ${theme.colors.primary};
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: ${theme.colors.primary};
+    background: ${theme.colors.secondary};
     border-radius: 4px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: ${theme.colors.primaryDark};
+    background: ${theme.colors.secondaryLight};
   }
 
 `;
