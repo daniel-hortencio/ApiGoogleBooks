@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const GridContainer = styled.div`
   display: grid;
   gap: 1rem;
+  margin-bottom: 3rem;
 
   @media(min-width: ${props => props.theme.breakpoints.mobileLandscape}){
     grid-template-columns: repeat(2, minmax(0, 1fr));

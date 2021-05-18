@@ -5,6 +5,7 @@ export const BookDetails = styled.div`
   border-radius: 1rem;
   background-color: #fff;
   box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.08);
+  margin-bottom: 3rem;
 `
 
 export const Header = styled.div`

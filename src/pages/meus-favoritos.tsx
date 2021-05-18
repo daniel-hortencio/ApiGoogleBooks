@@ -52,7 +52,7 @@ export default function Home() {
           <IconLike size={24} style={{ marginRight: "1rem" }} /> Meus favoritos
         </Text>
 
-        {results && results.lenght > 0 ? (
+        {results && results.length > 0 ? (
           <GridContainer>
             {results?.map((book) => (
               <Card
