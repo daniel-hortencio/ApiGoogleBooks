@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       volumeInfo,
     },
-    revalidate: 60 * 60 * 24 * 7, // 1 semana
+    revalidate: 60 * 60 * 24, // 1 dia
   };
 };
 

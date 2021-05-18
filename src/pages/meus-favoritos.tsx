@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
-import { useSearchKeyWords } from "contexts/SearchKeyWords";
+import { useSearchKeyWords } from "contexts/Search";
 import { IconLike } from "components/Icons";
 
 import WebsiteTemplate from "templates/Website";

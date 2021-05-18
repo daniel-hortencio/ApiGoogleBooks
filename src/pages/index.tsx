@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import { useSearchKeyWords } from "contexts/SearchKeyWords";
+import { useSearchKeyWords } from "contexts/Search";
 import { useSearchResults } from "contexts/SearchResults";
 import { findBooks } from "services/ApiFunctions/Book";
 
@@ -18,8 +18,13 @@ export default function Home() {
   const { results, setResults } = useSearchResults();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { searchKeyWords, setSearchKeyWords, maxResults } = useSearchKeyWords();
-  const [paginationCurrent, setPaginationCurrent] = useState<number>(1);
+  const {
+    searchKeyWords,
+    setSearchKeyWords,
+    maxResults,
+    paginationCurrent,
+    setPaginationCurrent,
+  } = useSearchKeyWords();
 
   function handleSubmit(e) {
     e.preventDefault();

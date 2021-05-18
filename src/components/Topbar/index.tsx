@@ -1,4 +1,4 @@
-import { useSearchKeyWords } from "contexts/SearchKeyWords";
+import { useSearchKeyWords } from "contexts/Search";
 
 import Container from "components/Container";
 import Logo from "components/Logo";

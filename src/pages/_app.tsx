@@ -5,19 +5,19 @@ import theme from "styles/theme";
 import GlobalStyle from "styles/global";
 
 import { SearchResultsProvider } from "contexts/SearchResults";
-import { SearchKeyWordsProvider } from "contexts/SearchKeyWords";
+import { SearchProvider } from "contexts/Search";
 
 import "../styles/fonts.css";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <SearchResultsProvider>
-      <SearchKeyWordsProvider>
+      <SearchProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
-      </SearchKeyWordsProvider>
+      </SearchProvider>
     </SearchResultsProvider>
   );
 }
