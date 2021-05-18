@@ -7,29 +7,27 @@ import { findBooks } from "services/ApiFunctions/Book";
 
 import WebsiteTemplate from "templates/Website";
 import SearchBar from "components/SearchBar";
-import { GridContainer } from "components/GridContainer/styles";
+import GridContainer from "components/GridContainer";
 import Card from "../components/Card";
 import Text from "components/Text";
+import Paginator from "components/Paginator";
 
 export default function Home() {
   const { results, setResults } = useSearchResults();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { searchKeyWords, setSearchKeyWords } = useSearchKeyWords();
-  const [pagination, setPagination] = useState({
-    startIndex: 0,
-    maxResults: 10,
-    total: 0,
-  });
+  const { searchKeyWords, setSearchKeyWords, maxResults } = useSearchKeyWords();
+  const [paginationCurrent, setPaginationCurrent] = useState<number>(1);
 
   function handleSubmit(e) {
     e.preventDefault();
 
+    setPaginationCurrent(1);
+
     if (searchKeyWords) {
       setIsLoading(true);
-      findBooks(searchKeyWords)
+      findBooks({ searchKeyWords, maxResults })
         .then((data) => {
-          console.log(data);
           setResults(data);
         })
         .catch((err) => console.log(err))
@@ -41,6 +39,28 @@ export default function Home() {
       setIsLoading(false);
     }
   }
+
+  const handleChange = (value) => {
+    const index = value - 1;
+
+    setPaginationCurrent(value);
+
+    if (searchKeyWords) {
+      setIsLoading(true);
+      findBooks({ searchKeyWords, startIndex: index * maxResults })
+        .then((data) => {
+          setPaginationCurrent(value);
+          setResults(data);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoading(false));
+
+      return;
+    } else {
+      setResults(null);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -59,14 +79,25 @@ export default function Home() {
         />
         {results?.totalItems && (
           <Text
-            text={`Resultados da busca: ${results.totalItems}`}
+            text={`${results.totalItems} resultado${
+              results.totalItems > 1 ? "s" : ""
+            } encontrado${results.totalItems > 1 ? "s" : ""}`}
             style={{ margin: "1rem 0" }}
+          />
+        )}
+
+        {results?.totalItems > maxResults && (
+          <Paginator
+            current={paginationCurrent}
+            pageSize={maxResults}
+            onChange={(page) => handleChange(page)}
+            total={results?.totalItems}
           />
         )}
 
         <GridContainer>
           {results &&
-            results.items.map((book) => (
+            results?.items?.map((book) => (
               <Card
                 key={book.id}
                 id={book.id}

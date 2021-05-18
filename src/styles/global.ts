@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: ${theme.colors.primary};
+    background: ${theme.colors.background};
   }
 
   /* Handle */
@@ -56,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: ${theme.colors.secondaryLight};
+    background: ${theme.colors.secondaryDark};
   }
 
 `;

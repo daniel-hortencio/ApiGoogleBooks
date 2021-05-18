@@ -1,9 +1,15 @@
 import { api } from "services/api";
 
-export const findBooks = async (searchKeyWords: string) => {
+type findBooksDTO = {
+  searchKeyWords: string;
+  maxResults?: number;
+  startIndex?: number;
+}
+
+export const findBooks = async ({ searchKeyWords, maxResults = 20, startIndex = 0 }: findBooksDTO) => {
 
   return await api.get(
-    `/v1/volumes?q=${searchKeyWords}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+    `/v1/volumes?q=${searchKeyWords}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.NEXT_PUBLIC_API_KEY}`
   ).then(({ data }) => data);
 
 }
