@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 import { findBookById } from "services/ApiFunctions/Book";
 import MessageIllustration from "components/MessageIllustration";
@@ -8,19 +9,12 @@ import WebsiteTemplate from "templates/Website";
 import BookDetails from "components/BookDetails";
 import ButtonGoBack from "components/ButtonGoBack";
 
-const Livro = () => {
+const Livro = ({ volumeInfo }) => {
   const [book, setBook] = useState<any>();
-  const router = useRouter();
-
-  const { id } = router.query;
 
   useEffect(() => {
-    findBookById(id as string)
-      .then((data) => setBook(data.volumeInfo))
-      .catch((err) => console.log(err));
-  }, [id]);
-
-  console.log(book);
+    setBook(volumeInfo);
+  }, [volumeInfo]);
 
   return (
     <WebsiteTemplate>
@@ -43,6 +37,28 @@ const Livro = () => {
       )}
     </WebsiteTemplate>
   );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { id } = params as any;
+
+  const volumeInfo = await findBookById(id as string)
+    .then((data) => data.volumeInfo)
+    .catch((err) => console.log(err));
+
+  return {
+    props: {
+      volumeInfo,
+    },
+    revalidate: 60 * 60 * 24 * 7, // 1 semana
+  };
 };
 
 export default Livro;

@@ -88,9 +88,7 @@ export default function Home() {
           />
         )}
 
-        {console.log(results)}
-
-        {results?.totalItems && results?.totalItems > 0 && (
+        {results?.totalItems > 0 && (
           <Text
             text={`${results.totalItems} resultado${
               results.totalItems > 1 ? "s" : ""
