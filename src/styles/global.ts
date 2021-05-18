@@ -18,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.3s;
   }
 
+/*   h1, h2, h3, h4, h5, h6, p, small, strong, span {
+    transition: font-size 0;
+  } */
+
   body {
     padding: 0;
     margin: 0;

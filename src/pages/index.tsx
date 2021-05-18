@@ -12,6 +12,8 @@ import Card from "../components/Card";
 import Text from "components/Text";
 import Paginator from "components/Paginator";
 
+import MessageIllustration from "components/MessageIllustration";
+
 export default function Home() {
   const { results, setResults } = useSearchResults();
 
@@ -77,7 +79,18 @@ export default function Home() {
           isLoading={isLoading}
           onSubmit={handleSubmit}
         />
-        {results?.totalItems && (
+
+        {!results && (
+          <MessageIllustration
+            image="/images/illustrations/welcome.svg"
+            title="O que você quer ler agora?"
+            subtitle="Me diga que livro você está procurando e eu trago para você!"
+          />
+        )}
+
+        {console.log(results)}
+
+        {results?.totalItems && results?.totalItems > 0 && (
           <Text
             text={`${results.totalItems} resultado${
               results.totalItems > 1 ? "s" : ""
@@ -92,6 +105,14 @@ export default function Home() {
             pageSize={maxResults}
             onChange={(page) => handleChange(page)}
             total={results?.totalItems}
+          />
+        )}
+
+        {results && results.totalItems === 0 && (
+          <MessageIllustration
+            image="/images/illustrations/no-favorites.svg"
+            title="Que pena não consegui encontrar o que você buscou!"
+            subtitle="Pode ter havido um engano, verifique o que foi digitado e tente novamente."
           />
         )}
 

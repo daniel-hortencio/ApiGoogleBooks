@@ -8,6 +8,7 @@ import WebsiteTemplate from "templates/Website";
 import { GridContainer } from "components/GridContainer/styles";
 import Card from "../components/Card";
 import Text from "components/Text";
+import MessageIllustration from "components/MessageIllustration";
 
 import ButtonGoBack from "components/ButtonGoBack";
 
@@ -39,7 +40,6 @@ export default function Home() {
 
       <WebsiteTemplate>
         <ButtonGoBack />
-
         <Text
           element="h1"
           style={{
@@ -52,9 +52,9 @@ export default function Home() {
           <IconLike size={24} style={{ marginRight: "1rem" }} /> Meus favoritos
         </Text>
 
-        <GridContainer>
-          {results &&
-            results?.map((book) => (
+        {results && results.lenght > 0 ? (
+          <GridContainer>
+            {results?.map((book) => (
               <Card
                 key={book.id}
                 id={book.id}
@@ -64,7 +64,14 @@ export default function Home() {
                 publishedDate={book.publishedDate}
               />
             ))}
-        </GridContainer>
+          </GridContainer>
+        ) : (
+          <MessageIllustration
+            image="/images/illustrations/no-favorites.svg"
+            title="Que pena, acho que você ainda não tem favoritos!"
+            subtitle="Busque pelos seus livros preferidos, clique no botão de like e o livro será guardado como favorito."
+          />
+        )}
       </WebsiteTemplate>
     </>
   );

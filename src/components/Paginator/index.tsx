@@ -1,5 +1,4 @@
 import { Pagination } from "antd";
-import "antd/dist/antd.css";
 
 import * as S from "./styles";
 
