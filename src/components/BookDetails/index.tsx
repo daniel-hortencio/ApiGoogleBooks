@@ -1,4 +1,5 @@
 import Link from "next/link";
+import parse from "html-react-parser";
 
 import Text from "components/Text";
 import ImageContainer from "components/ImageContainer";
@@ -72,7 +73,7 @@ const BookDetails = ({
             style={{ opacity: description ? 1 : 0.4 }}
             element={description ? "h2" : "p"}
           />
-          {description && <Text text={description} />}
+          {description && <Text text={parse(description) as string} />}
         </S.Description>
       </S.BookDetails>
     </>

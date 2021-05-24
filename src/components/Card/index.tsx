@@ -8,14 +8,7 @@ import Text from "../Text";
 import { isFavorite } from "utils/isFavorite";
 
 import * as S from "./styles";
-
-interface ICard {
-  id: string;
-  imageUrl: string | undefined;
-  title: string;
-  description: string;
-  publishedDate: string;
-}
+import { BookDTO } from "services/ApiFunctions/Book/types";
 
 const Card = ({
   id,
@@ -23,7 +16,7 @@ const Card = ({
   title,
   description,
   publishedDate,
-}: ICard) => {
+}: BookDTO) => {
   const [cardIsFavorite, setCardIsFavorite] = useState<boolean>(isFavorite(id));
 
   const handleStoreFavorite = (id: string) => {

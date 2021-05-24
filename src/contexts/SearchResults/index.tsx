@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
+import { SearchResultsDTO } from "services/ApiFunctions/Book/types";
 
 interface ISearchResultsProvider {
   results: any;
@@ -8,7 +9,7 @@ interface ISearchResultsProvider {
 const SearchResultsContext = createContext({} as ISearchResultsProvider);
 
 export const SearchResultsProvider: React.FC = ({ children }) => {
-  const [results, setResults] = useState<any>();
+  const [results, setResults] = useState<SearchResultsDTO>();
 
   return (
     <SearchResultsContext.Provider value={{ results, setResults }}>
