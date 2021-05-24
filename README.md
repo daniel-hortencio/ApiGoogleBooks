@@ -19,6 +19,13 @@
 - O usuário deve poder navegar pelos resultados da busca por meio de um paginador.
 - O usuário deve poder acessar desde um dispositivo móvel sem comprometer a navegação.
 
+# Sobre o projeto
+- Foi escolhido o NextJs para geração de páginas estáticas para a página de detalhes do livro
+- Foi escolhido Syled Components como lib para o CSS
+- Como estratégia de guardar os favoritos foi usado o LocalStorage para guardar os dados dos livros marcados como favoritos.
+- Deploy automático na Vercel
+
+
 [Ver projeto hospedado na Vercel](https://leiamais-six.vercel.app/)
 
 ---
