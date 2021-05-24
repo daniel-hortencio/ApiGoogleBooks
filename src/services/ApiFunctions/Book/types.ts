@@ -9,7 +9,7 @@ export type BookDTO = {
 }
 
 export type SearchResultsDTO = {
-  items: Array<BookDTO>;
+  items: Array<BookDTO> | [];
   totalItems: number;
 }
 
