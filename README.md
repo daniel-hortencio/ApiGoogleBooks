@@ -3,12 +3,17 @@
 - Criar um sistem para buscar livros disponíveis na API do Google Books []
 - O layout da aplicação fica a cargo do desenvolvedor []
 - Em todos os resultados das buscas devem retornar os itens descritos abaixo:
-  Imagem da capa do livro [ok]
-  Título [ok]
-  Descrição [ok]
-  Data da publicação [ok]
+    - Imagem da capa do livro 
+    - Título 
+    - Descrição
+    - Data da publicação
 
 # Requisitos
+- O usuário deve poder digitar algumas palavras chave e ver uma lista de livros que relacionados com a busca.
+- O usuário deve poder clicar em um dos livros e poder ver em detalhes a descrição do livro
+- O usuário deve poder marcar o livro como favorito para poder buscá-los futuramente.
+- O usuário deve poder navegar pelos resultados da busca por meio de um paginador.
+- O usuário deve poder acessar desde um dispositivo móvel sem comprometer a navegação.
 
 ---
 
