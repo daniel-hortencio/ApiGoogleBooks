@@ -9,7 +9,7 @@ export const findBooks = async ({ searchKeyWords, maxResults = 20, startIndex = 
     const { totalItems, items } = data
 
     const results = {
-      items: items.map((book) => {
+      items: totalItems > 0 ? items?.map((book) => {
         return {
           id: book.id,
           title: book.volumeInfo.title ? book.volumeInfo.title : "",
@@ -17,9 +17,10 @@ export const findBooks = async ({ searchKeyWords, maxResults = 20, startIndex = 
           description: book.volumeInfo.description ? book.volumeInfo.description : "",
           publishedDate: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "",
         }
-      }),
+      }) : [],
       totalItems
     }
+
     return results
   });
 }
@@ -41,4 +42,3 @@ export const findBookById = async (id: string): Promise<Omit<BookDTO, "id">> => 
     return book
   });
 }
-
