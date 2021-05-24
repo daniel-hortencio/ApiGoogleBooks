@@ -1,3 +1,7 @@
+![Preview do projeto](https://raw.githubusercontent.com/daniel-hortencio/ApiGoogleBooks/master/public/images/preview/preview.JPG)
+
+[Ver projeto hospedado na Vercel](https://leiamais-six.vercel.app/)
+
 # Desafio Técnico UP! TECH
 
 - Criar um sistem para buscar livros disponíveis na API do Google Books []
@@ -14,6 +18,8 @@
 - O usuário deve poder marcar o livro como favorito para poder buscá-los futuramente.
 - O usuário deve poder navegar pelos resultados da busca por meio de um paginador.
 - O usuário deve poder acessar desde um dispositivo móvel sem comprometer a navegação.
+
+[Ver projeto hospedado na Vercel](https://leiamais-six.vercel.app/)
 
 ---
 
