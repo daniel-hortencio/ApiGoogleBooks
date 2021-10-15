@@ -4,8 +4,8 @@
 
 # Desafio Técnico UP! TECH
 
-- Criar um sistem para buscar livros disponíveis na API do Google Books []
-- O layout da aplicação fica a cargo do desenvolvedor []
+- Criar um sistem para buscar livros disponíveis na API do Google Books 
+- O layout da aplicação fica a cargo do desenvolvedor 
 - Em todos os resultados das buscas devem retornar os itens descritos abaixo:
     - Imagem da capa do livro 
     - Título 
